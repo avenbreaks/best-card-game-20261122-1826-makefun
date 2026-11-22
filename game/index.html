@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Pact — a duel of cinders</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <!-- Title screen -->
+  <section id="title-screen" class="screen">
+    <div class="title-ember">▲</div>
+    <h1>EMBER PACT</h1>
+    <p class="tagline">A duel of cinders. Outwit Sable, Warden of Cinders,<br>before your own flame gutters out.</p>
+    <div class="title-rules">
+      <div><b>30</b> life each</div>
+      <div><b>Embers</b> grow every turn — spend them to play cards</div>
+      <div><b>Creatures</b> fight on the table · <b>Spells</b> strike at once</div>
+      <div>Keys <b>1–5</b> play a card · <b>Enter</b> ends your turn</div>
+    </div>
+    <button id="start-btn" class="big-btn">Begin the duel</button>
+    <p class="foot">An original game · no network · plays offline</p>
+  </section>
+
+  <!-- Duel table -->
+  <section id="table-screen" class="screen hidden">
+    <header id="topbar">
+      <div class="duelist rival" id="rival-panel">
+        <div class="portrait rival-portrait">S</div>
+        <div class="duelist-info">
+          <div class="duelist-name">Sable, Warden of Cinders</div>
+          <div class="life-row"><span class="life-label">LIFE</span><span class="life" id="rival-life">30</span><span class="life-max">/ 30</span></div>
+          <div class="mana-row"><span class="mana-label">EMBERS</span><span class="mana" id="rival-mana">●</span></div>
+        </div>
+      </div>
+      <div id="turn-banner"><span id="turn-text">Your turn</span><span id="turn-count">Turn 1</span></div>
+      <div class="duelist you" id="you-panel">
+        <div class="duelist-info right">
+          <div class="duelist-name">Ashcaller — you</div>
+          <div class="life-row"><span class="life-label">LIFE</span><span class="life" id="you-life">30</span><span class="life-max">/ 30</span></div>
+          <div class="mana-row"><span class="mana-label">EMBERS</span><span class="mana" id="you-mana">●</span></div>
+        </div>
+        <div class="portrait you-portrait">A</div>
+      </div>
+    </header>
+
+    <div id="log" aria-live="polite"></div>
+
+    <main id="table">
+      <div class="side rival-side">
+        <div class="hand-label">Sable's hand <span id="rival-hand-count">4 cards</span></div>
+        <div id="rival-hand" class="hand backs"></div>
+        <div id="rival-board" class="board"></div>
+      </div>
+      <div class="midline"><span id="hint">Play a card, then end your turn.</span>
+        <button id="end-turn-btn" class="big-btn small">End turn ⏎</button>
+      </div>
+      <div class="side you-side">
+        <div id="you-board" class="board"></div>
+        <div class="hand-label">Your hand <span id="you-deck-count">deck 16</span></div>
+        <div id="you-hand" class="hand"></div>
+      </div>
+    </main>
+  </section>
+
+  <!-- Win / loss overlays -->
+  <section id="end-screen" class="screen hidden">
+    <div id="end-emblem">▲</div>
+    <h1 id="end-title">VICTORY</h1>
+    <p id="end-text"></p>
+    <p id="end-stats"></p>
+    <button id="again-btn" class="big-btn">Duel again</button>
+  </section>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
